@@ -12,9 +12,17 @@ def work():
 
         remaining = battery.precent
         plugged = battery.power_plugged
-
-        if remaining <=20 and plugged == False:
+        
+        played = 0 
+        
+        if remaining <=20 and plugged == False and played == 0:
             play_sound.play_bat_low()
+            played = 1
+        
+        elif played == 1:
+            time.sleep(300)
+            played = 0
+        
         else:
             pass
 
