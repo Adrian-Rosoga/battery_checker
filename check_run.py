@@ -3,13 +3,13 @@ num = int(file_open.read())
 file_open.close()
 
 file_open = open("running.txt","w")
-from check_bat import check_batt, stop_check
 
 if num == 0:
     file_open.write("1") #if not running it start running
-    check_batt()
+    file_open.close()
 
-
+        
 else:
     file_open.write("0") #shuts down the program
-    stop_check()
+    file_open.close()
+
