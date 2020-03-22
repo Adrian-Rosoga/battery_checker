@@ -2,7 +2,7 @@ import time
 from pygame import mixer
 
 
-def play(soundfile, duration_secs=1000000):
+def play(soundfile, duration_secs="<specify a number>"):
     """Play a soundfile for a predetermined duration"""
 
     mixer.init()
@@ -12,6 +12,5 @@ def play(soundfile, duration_secs=1000000):
     mixer.music.stop()
     mixer.quit()
 
-
-# Play for a determined period
+# Play for a determined period.
 play('test.mp3', 5)
