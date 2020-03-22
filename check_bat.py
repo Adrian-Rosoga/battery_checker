@@ -1,29 +1,23 @@
 
+import psutil
+import time
+import play_sound
+
+
 def work():
-    import psutil
-    import time
-    import play_sound
-
-    temp = 0
-    while temp == 0:
-        time.sleep(60)
+    
+    while True:
+        
         battery = psutil.sensors_battery()
-        print(battery)
+        print("Battery:", battery)
 
-        remaining = battery.precent
+        remaining = battery.percent
         plugged = battery.power_plugged
 
-        played = 0
+        if remaining < 20 and not plugged:
+            play_sound.play('Battery_Alert.wav', 3)
 
-        if remaining <= 20 and plugged == False and played == 0:
-            play_sound.play_bat_low()
-            played = 1
-
-        elif played == 1:
-            time.sleep(300)
-            played = 0
-
-        else:
-            pass
+        time.sleep(60)
+        
 
 work()
